@@ -22,47 +22,6 @@ Projetado para **gestão baseada em dados** no contexto profissional e universit
 - Plotly
 
 
-## 📂 Estrutura do Repositório
-```
-DATA-ANALYSIS-UPE/
-│── images/
-│   └── upeLogo.png
-│
-│── Projeto de Desenvolvimento Tecnologico/
-│   ├── input/
-│   │   └── Projetos de Desenvolvimento Tecnologico.json
-│   └── Streamlit/
-│       ├── analisesFinanceiras/
-│       │   ├── analise1.py
-│       │   ├── analise2.py
-│       │   ├── analise3.py
-│       │   ├── analise4.py
-│       │   └── data_utils.py
-│       └── projeto_tecnologico.py
-│
-│── PROPEGI Financeiro/
-│   ├── input/
-│   │   └── Financas.json
-│   └── Streamlit/
-│       ├── analisesFinanceiras/
-│       │   ├── analise1_comparativa.py
-│       │   ├── analise2_somatorio.py
-│       │   ├── analise3_total_mensal.py
-│       │   └── data_utils.py
-│       └── projeto_financeiro.py
-│
-│── .streamlit/
-│   └── config.toml
-│── requirements.txt
-│── requirements-dev.txt
-│── Makefile
-│── tasks.py
-│── .gitignore
-└── README.md
-```
-
-
-
 ## ⚙️ Instalação
 
 ### 1) Clone
@@ -238,14 +197,6 @@ invoke format
 invoke test
 invoke clean
 ```
-
-## 🏫 Contexto Acadêmico
-Projeto desenvolvido na **Universidade de Pernambuco (UPE)**, integrando **Engenharia de Software**, **Análise de Dados** e **Ciência de Dados** para apoiar **Decisões Gerenciais** baseadas em evidências.
-
-## 👤 Autor
-**Gabriel Lopes de Albuquerque** — UPE  
-- 📘 Gmail: gabriel.lopes.albuquerque@gmail.com
-- 🔗 [LinkedIn](https://www.linkedin.com/in/gabriel-lopes-de-albuquerque-658a8317b/)
 
 ## 📄 Licença
 Distribuído sob a licença **MIT**. Consulte o arquivo `LICENSE`.
