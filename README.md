@@ -1,174 +1,251 @@
-# PROPEGI – Dashboards e Análises de Dados (UPE)
+# ◈ Data Analysis UPE
 
-Repositório com dashboards em **Streamlit** para visualizar os dados do **Projeto de Desenvolvimento Tecnológico** e **PROPEGI Financeiro**
+[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.38.0-FF4B4B.svg)](https://streamlit.io/)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
----
+Dashboards interativos em **Streamlit** com dados **JSON** para dois domínios:
+- **PROPEGI Financeiro**
+- **Projeto de Desenvolvimento Tecnológico**
 
-## 📦 Módulos
+Projetado para **gestão baseada em dados** no contexto profissional e universitário, com foco em clareza, comparabilidade e replicabilidade.
 
-- **Projeto de Desenvolvimento Tecnológico** 
-- **PROPEGI Financeiro** 
+<img width="1536" height="1024" alt="63ad614e-5fd4-42e0-aebd-a09f11bfe0c4" src="https://github.com/user-attachments/assets/d3b19fe7-8477-4ae3-aa4c-f54d2c81dd9f" />
 
----
 
-## 📁 Estrutura
 
+
+## 🚀 Tecnologias
+- Python 3.10+
+- Streamlit
+- Pandas
+- Plotly
+
+
+## 📂 Estrutura do Repositório
 ```
-PROPEGI-DATA-ANALYSIS/
-├─ Projeto de Desenvolvimento Tecnologico/
-│  ├─ input/                              # dados brutos
-│  └─ output/
-│     ├─ dados_tratados.csv               # base tratada (usada pelo Streamlit)
-│     └─ processar_dados_projetos.ipynb   # notebook de tratamento
+DATA-ANALYSIS-UPE/
+│── images/
+│   └── upeLogo.png
 │
-├─ PROPEGI Financeiro/                    
-│  ├─ input/
-│  │  └─ Financas.json
-│  └─ output/
-│     ├─ dados_tratados.csv
-│     └─ processar_dados_financeiro.ipynb
+│── Projeto de Desenvolvimento Tecnologico/
+│   ├── input/
+│   │   └── Projetos de Desenvolvimento Tecnologico.json
+│   └── Streamlit/
+│       ├── analisesFinanceiras/
+│       │   ├── analise1.py
+│       │   ├── analise2.py
+│       │   ├── analise3.py
+│       │   ├── analise4.py
+│       │   └── data_utils.py
+│       └── projeto_tecnologico.py
 │
-├─ Streamlit/
-│  ├─ projeto.py                          # app  (Tecnológico)
-│  └─ projeto_financeiro.py               # app  (Financeiro)
+│── PROPEGI Financeiro/
+│   ├── input/
+│   │   └── Financas.json
+│   └── Streamlit/
+│       ├── analisesFinanceiras/
+│       │   ├── analise1_comparativa.py
+│       │   ├── analise2_somatorio.py
+│       │   ├── analise3_total_mensal.py
+│       │   └── data_utils.py
+│       └── projeto_financeiro.py
 │
-└─ README.md
+│── .streamlit/
+│   └── config.toml
+│── requirements.txt
+│── requirements-dev.txt
+│── Makefile
+│── tasks.py
+│── .gitignore
+└── README.md
 ```
 
----
 
-## ✅ O que os dashboards entregam
 
-### **Projeto de Desenvolvimento Tecnológico**
-- Comparativo mensal — Agência × Unidade × IA-UPE (linhas + cards)  
-- Projetos por Ano × Segmento (colunas empilhadas)  
-- Recebimentos anuais — Agência × Unidade × IA-UPE (barras)  
-- Recebimentos por ano por Setor + pizza por setor  
+## ⚙️ Instalação
 
-### **PROPEGI Financeiro** 
-- Em Desenvolvimento
-
-Ambos os apps leem apenas os CSVs em `output/`.
-
----
-
-## 🧩 Requisitos
-
-- Python **3.10+**  
-- Bibliotecas:
-  - `streamlit`
-  - `pandas`
-  - `plotly`
-  - `openpyxl` (para leitura de `.xlsx` nos notebooks)
-
-Opcional — `requirements.txt`:
-```
-streamlit
-pandas
-plotly
-openpyxl
-```
-
----
-
-## 🚀 Como rodar
-
-Na raiz do repositório:
-
-### 1) (Opcional) Criar ambiente virtual
-
-**Windows**
+### 1) Clone
 ```bash
-python -m venv .venv
-.venv\Scripts\activate
+git clone https://github.com/seu-usuario/DATA-ANALYSIS-UPE.git
+cd DATA-ANALYSIS-UPE
 ```
 
-**macOS / Linux**
+### 2) Ambiente virtual
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
+python -m venv venv
+# Linux/Mac
+source venv/bin/activate
+# Windows (PowerShell)
+venv\Scripts\Activate.ps1
 ```
 
----
-
-### 2) Instalar dependências
-
-Com `requirements.txt`:
+### 3) Dependências
 ```bash
+# Produção
 pip install -r requirements.txt
+
+# Desenvolvimento (opcional)
+pip install -r requirements-dev.txt
 ```
 
-Sem `requirements.txt`:
+## ▶️ Execução Rápida
+
+### Via **Makefile** (Linux/Mac; Windows com Make instalado)
 ```bash
-pip install streamlit pandas plotly openpyxl
+make run-financeiro
+make run-tecnologico
 ```
 
----
-
-### 3) Garantir as bases tratadas
-
-- **Tecnológico:**  
-  `Projeto de Desenvolvimento Tecnologico/output/dados_tratados.csv`
-
-- **Financeiro:**  
-  `PROPEGI Financeiro/output/dados_tratados.csv`
-
-Se não existirem, rode os notebooks:
-
-- `Projeto de Desenvolvimento Tecnologico/output/processar_dados_projetos.ipynb`  
-- `PROPEGI Financeiro/output/processar_dados_financeiro.ipynb`  
-
----
-
-### 4) Iniciar o app
-
-**Tecnológico (principal)**
+### Via **Invoke** (Windows/Linux/Mac – sem Make)
 ```bash
-streamlit run Streamlit/projeto.py
+# já dentro do venv:
+invoke run-financeiro
+invoke run-tecnologico
 ```
 
-**Financeiro (opcional)**
+### Comando Streamlit direto
 ```bash
-streamlit run Streamlit/projeto_financeiro.py
+streamlit run "PROPEGI Financeiro/Streamlit/projeto_financeiro.py"
+streamlit run "Projeto de Desenvolvimento Tecnologico/Streamlit/projeto_tecnologico.py"
 ```
 
-O navegador abre automaticamente (ex.: [http://localhost:8501](http://localhost:8501)).
+> 💡 Dica: no topo de cada app, utilize:
+> ```python
+> import streamlit as st
+> st.set_page_config(
+>     page_title="Data Analysis UPE",
+>     page_icon="images/upeLogo.png",
+>     layout="wide"
+> )
+> ```
+
+
+## 🔎 O que cada análise faz (explicado de forma explícita)
+
+
+## 📁 Projeto de Desenvolvimento Tecnológico  
+`Projeto de Desenvolvimento Tecnologico/Streamlit/analisesFinanceiras/`
+
+### 1) Séries — **Recebimentos mensais por órgão (Agência, Unidade, IA-UPE)**
+**Arquivo:** `analise1.py`  
+
+- **Objetivo:** visualizar a **evolução mensal** dos recebimentos por **órgão** ao longo de um ano.
+- **Como ler:** cada linha representa um órgão (Agência, Unidade, IA-UPE). Picos e vales indicam **sazonalidade** e **meses críticos**.
+- **Filtros/controles:** seleção de **ano** (dropdown).
+- **Uso típico:** detectar meses de maior entrada, comparar o comportamento entre órgãos e planejar **alocação/execução** mensal.
+
+<img width="1365" height="533" alt="image" src="https://github.com/user-attachments/assets/672143ed-e281-45dc-a367-90f9df67b70d" />
 
 ---
 
-## 📊 Colunas mínimas esperadas
+### 2) Barras empilhadas — **Projetos em desenvolvimento por segmento/ano**
+**Arquivo:** `analise2.py`  
 
-### **Tecnológico — dados_tratados.csv**
-- Data publicação (ou equivalente p/ ano/mês)  
-- Segmento  
-- Status (Concluído / Em andamento / Aberto)  
-- Valor agência, Valor unidade, Valor IA-UPE  
+- **Objetivo:** comparar a **quantidade de projetos** por **segmento** (Educação, Meio Ambiente, Saúde, Segurança, Tecnologia) em cada **ano**.
+- **Como ler:** barras empilhadas por ano; cada cor é um segmento com o respectivo **rótulo de contagem**.
+- **Filtros/controles:** visual agregado por ano (sem filtro adicional na imagem).
+- **Uso típico:** priorização de portfólio por segmento; acompanhar **mudança de foco** ao longo dos anos.
 
-### **Financeiro — dados_tratados.csv 
-- Em desenvolvimento
-
----
-
-## 🔄 Atualizar dados
-
-1. Coloque os brutos em `input/`.  
-2. Rode o notebook para gerar `dados_tratados.csv` em `output/`.  
-3. Recarregue o Streamlit (ou reinicie `streamlit run`).  
+<img width="1365" height="532" alt="image" src="https://github.com/user-attachments/assets/a8d0db67-8b90-456a-8af8-86a999e715b8" />
 
 ---
 
-### Boas práticas
-- Manter nomes de colunas estáveis.  
-- Documentar mudanças nos notebooks (changelog).  
-- Versionar apenas código e CSVs tratados não sensíveis.  
+### 3) Barras agrupadas — **Recebimentos anuais por órgão (Agência, Unidade, IA-UPE)**
+**Arquivo:** `analise3.py`  
+
+- **Objetivo:** comparar o **total anual** recebido por cada **órgão**.
+- **Como ler:** barras lado a lado (Agência, Unidade, IA-UPE) para cada ano; **rótulos** em k ajudam na leitura imediata.
+- **Filtros/controles:** visão anual consolidada (sem filtro adicional na imagem).
+- **Uso típico:** avaliação **macro** por órgão e ano; suporte a planejamento e **prestação de contas**.
+
+<img width="1365" height="511" alt="image" src="https://github.com/user-attachments/assets/95e38bc6-57e6-40c9-85b1-a44c3b730e10" />
 
 ---
 
-## 🤝 Contribuição
+### 4) Barras + Donut — **Recebimentos por ano por Setor (Segmento)**
+**Arquivo:** `analise4.py`  
 
-1. Criar uma branch:
+- **Objetivo:** entender valores por **segmento** ao longo dos anos e a **distribuição percentual** em um **ano** específico.
+- **Como ler:**  
+  - **Barras** com valores por segmento em cada ano.  
+  - **Donut** mostra a **participação (%)** de cada segmento no ano filtrado.
+- **Filtros/controles:** seleção de **período/ano** (dropdown para a donut).
+- **Uso típico:** balancear investimentos entre segmentos; identificar **concentrações** e **oportunidades**.
+
+<img width="1365" height="522" alt="image" src="https://github.com/user-attachments/assets/7482dd2c-1d96-4bc4-91a5-93c83bf5706c" />
+<img width="991" height="454" alt="image" src="https://github.com/user-attachments/assets/8eae47b1-defa-4d00-bdbd-c8df46626d6b" />
+
+---
+
+## 📁 PROPEGI Financeiro  
+`PROPEGI Financeiro/Streamlit/analisesFinanceiras/`
+
+### 1) Heatmap — **Comparativo de valores das folhas por projeto (Mês/Ano)**
+**Arquivo:** `analise1_comparativa.py`  
+
+- **Objetivo:** comparar a **intensidade mensal/anual** dos **valores de folha** por **projeto**.
+- **Como ler:** tons mais escuros = **maior valor**; eixo Y são **projetos** e eixo X é **Mês/Ano**.
+- **Filtros/controles:** **caminho do JSON**, filtro de **Ano (opcional)** e seleção de **projetos**; botão **Limpar filtros**.
+- **Uso típico:** identificar **picos sazonais**, meses críticos por projeto e **lacunas** de execução.
+
+<img width="1365" height="517" alt="image" src="https://github.com/user-attachments/assets/c0789844-83e2-4feb-935c-7a172b50572d" />
+
+---
+
+### 2) Barras horizontais — **Somatório dos valores das folhas por projeto**
+**Arquivo:** `analise2_somatorio.py`  
+
+- **Objetivo:** ranquear projetos pelo **total acumulado** (soma) no período filtrado.
+- **Como ler:** barras ordenadas (desc); rótulos exibem o **total em R$** por projeto.
+- **Filtros/controles:** filtro de **Ano (opcional)** e **busca por nome** do projeto (contém).
+- **Uso típico:** definição de **TOP-N** de custo; priorização de auditoria e replanejamento.
+
+<img width="1362" height="548" alt="image" src="https://github.com/user-attachments/assets/584bfb1e-9d7e-472d-a4eb-57a12941d8ca" />
+
+---
+
+### 3) Barras verticais — **Evolução mensal do valor total das folhas (todos os projetos)**
+**Arquivo:** `analise3_total_mensal.py`  
+
+- **Objetivo:** acompanhar o **total mensal** somando **todos os projetos**.
+- **Como ler:** barras por mês; rótulos com valores em **R$** destacam picos e vales.
+- **Filtros/controles:** filtro de **Ano (opcional)** e **projetos** (multi-seleção).
+- **Uso típico:** visão **macro** para planejamento orçamentário e acompanhamento de **execução mensal**.
+
+<img width="1365" height="519" alt="image" src="https://github.com/user-attachments/assets/5ca3284a-bdce-4d66-b7da-46180ccb4ce5" />
+
+
+> **Observação:** `data_utils.py` padroniza campos do JSON, cria colunas derivadas (ex.: `ano`, `mes`) e agrega dados.
+
+## ✅ Qualidade e Produtividade
+- **Lint:** `flake8`
+- **Formatação:** `black`
+- **Testes:** `pytest`
+- **Automação:** `Makefile` e `invoke (tasks.py)`
+
+Comandos úteis:
 ```bash
-git checkout -b feat/minha-melhoria
+# Com Make
+make lint
+make format
+make test
+make clean
+
+# Com Invoke
+invoke lint
+invoke format
+invoke test
+invoke clean
 ```
-2. Fazer commits pequenos e objetivos.  
-3. Abrir PR com descrição e prints dos gráficos (quando possível).  
+
+## 🏫 Contexto Acadêmico
+Projeto desenvolvido na **Universidade de Pernambuco (UPE)**, integrando **Engenharia de Software**, **Análise de Dados** e **Ciência de Dados** para apoiar **Decisões Gerenciais** baseadas em evidências.
+
+## 👤 Autor
+**Gabriel Lopes de Albuquerque** — UPE  
+- 📘 Gmail: gabriel.lopes.albuquerque@gmail.com
+- 🔗 [LinkedIn](https://www.linkedin.com/in/gabriel-lopes-de-albuquerque-658a8317b/)
+
+## 📄 Licença
+Distribuído sob a licença **MIT**. Consulte o arquivo `LICENSE`.
