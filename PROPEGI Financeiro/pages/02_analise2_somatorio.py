@@ -5,11 +5,13 @@ from pathlib import Path
 import streamlit as st
 import plotly.express as px
 
-# Importa utils do diretório pai (app/)
-sys.path.append(str(Path(__file__).resolve().parents[1]))
+# Adiciona o diretório pai ao path para importar data_utils
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from data_utils import carregar_financas_json, filtrar  # noqa: E402
 
-DEFAULT_JSON_PATH = Path(__file__).resolve().parents[2] / "input" / "Financas.json"
+DEFAULT_JSON_PATH = Path(__file__).resolve().parents[1] / "input" / "Financas.json"
 
 st.set_page_config(page_title="Análise 2", layout="wide", initial_sidebar_state="collapsed")
 st.header("◈ Análise 2: Somatório dos Valores das Folhas por projeto")

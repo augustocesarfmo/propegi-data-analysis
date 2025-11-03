@@ -6,11 +6,13 @@ import streamlit as st
 import plotly.express as px
 import pandas as pd
 
-# Garante que podemos importar data_utils que está na pasta pai (app/)
-sys.path.append(str(Path(__file__).resolve().parents[1]))
+# Adiciona o diretório pai ao path para importar data_utils
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from data_utils import carregar_financas_json, filtrar  # noqa: E402
 
-DEFAULT_JSON_PATH = Path(__file__).resolve().parents[2] / "input" / "Financas.json"
+DEFAULT_JSON_PATH = Path(__file__).resolve().parents[1] / "input" / "Financas.json"
 
 st.set_page_config(page_title="Análise 1", layout="wide", initial_sidebar_state="collapsed")
 st.header("◈ Comparativo de Valores das Folhas por Projeto com base no Mês e o Ano")
