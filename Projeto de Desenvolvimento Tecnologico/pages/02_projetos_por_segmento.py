@@ -8,7 +8,7 @@ from data_utils import (          # <- import ABSOLUTO
     DEFAULT_JSON_NAME,            # <- nome padrão do JSON
 )
 
-st.title("◈ Análise 2 — Projetos em desenvolvimento por segmento/ano")
+st.title("◈ Projetos em desenvolvimento por segmento e ano")
 st.caption("Visualização da quantidade de projetos por segmento em cada ano.")
 
 # Carregamento
@@ -22,10 +22,7 @@ if "Segmento" not in df.columns:
 
 # Agrupamento: conta projetos por Ano e Segmento
 df_group = (
-    df.groupby(["Ano", "Segmento"])
-      .size()
-      .reset_index(name="QtdProjetos")
-      .sort_values(["Ano", "Segmento"])
+    df.groupby(["Ano", "Segmento"]).size().reset_index(name="QtdProjetos").sort_values(["Ano", "Segmento"]) 
 )
 
 # Gráfico de barras empilhadas

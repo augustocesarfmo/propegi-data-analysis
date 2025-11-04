@@ -48,7 +48,7 @@ def kpi_card(title: str, big_value: str, small_label: str, small_value: str):
 
 # ---------- Página ----------
 st.set_page_config(layout="wide")
-st.title("◈ Análise 3 — Recebimentos anuais por órgão (Agência, Unidade, IA-UPE)")
+st.title("◈ Recebimentos anuais por órgão (Agência, Unidade, IA-UPE)")
 st.caption("Comparativo de quanto cada órgão recebeu em cada ano.")
 
 # Carregamento

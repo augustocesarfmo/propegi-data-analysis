@@ -6,9 +6,9 @@ st.title("Home")
 st.write("Use os links abaixo para navegar:")
 
 st.page_link("app.py", label="Home", icon="🏠")
-st.page_link("pages/page_1.py", label="Análise 1 — Mensal", icon="1️⃣")
-st.page_link("pages/page_2.py", label="Análise 2 — Exemplo", icon="2️⃣")
-st.page_link("pages/page_3.py", label="Análise 3 — Exemplo", icon="3️⃣")
-st.page_link("pages/page_4.py", label="Análise 4 — Exemplo ", icon="4️⃣")
+st.page_link("pages/01_recebimentos_mensais.py", label="Recebimentos mensais — Agência / Unidade / IA-UPE", icon="📅")
+st.page_link("pages/02_projetos_por_segmento.py", label="Projetos em desenvolvimento por segmento/ano", icon="📊")
+st.page_link("pages/03_recebimentos_anuais.py", label="Recebimentos anuais por órgão", icon="📈")
+st.page_link("pages/04_recebimentos_por_setor.py", label="Recebimentos por setor (segmento)", icon="🥧")
 
 
