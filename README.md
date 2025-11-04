@@ -32,9 +32,10 @@ cd 'propegi-data-analysis'
 
 ---
 
-## 2) Criar e ativar ambiente virtual
+## 2) Criar e ativar ambiente virtual (OBRIGATÓRIO)
 
-Recomendo usar um ambiente virtual chamado `.venv` na raiz do repositório.
+⚠️ **IMPORTANTE**: É obrigatório usar um ambiente virtual para evitar conflitos com outros projetos Python.
+Vamos criar um ambiente chamado `.venv` na raiz do repositório.
 
 Windows (PowerShell):
 
@@ -81,40 +82,45 @@ Se precisar de pacotes de desenvolvimento (formatadores, linter, testes), posso 
 ## 4) Estrutura relevante do projeto
 
 - `Projeto de Desenvolvimento Tecnologico/`
-  - `your_app.py` — app Streamlit principal deste domínio
+  - `app.py` — app Streamlit principal deste domínio
   - `data_utils.py`, `pages/` — utilitários e páginas auxiliares
   - `input/Projetos de Desenvolvimento Tecnologico.json` — exemplo/entrada de dados
 
-- `PROPEGI Financeiro/app/`
-  - `projeto_financeiro.py` — app Streamlit principal do domínio financeiro
-  - `analisesFinanceiras/` — módulos das análises (cada `run()` executa a UI dessa análise)
+- `PROPEGI Financeiro/`
+  - `app.py` — app Streamlit principal do domínio financeiro
+  - `data_utils.py`, `pages/` — utilitários e páginas auxiliares
   - `input/Financas.json` — arquivo de dados financeiros
 
 ---
 
 ## 5) Como executar os apps (exemplos)
 
-Importante: antes de rodar, ative o `.venv` conforme o passo 2.
+⚠️ **MUITO IMPORTANTE**: 
+1. **SEMPRE** ative o ambiente virtual (`.venv`) antes de rodar (veja passo 2)
+2. **NUNCA** tente rodar sem ativar o ambiente virtual, pois as dependências não estarão disponíveis
+3. **O MESMO** ambiente virtual (`.venv`) serve para rodar os dois projetos! Não precisa criar um novo
+
+💡 **Dica**: Depois que o ambiente virtual estiver ativado, você pode rodar qualquer um dos dois projetos (ou os dois ao mesmo tempo em terminais diferentes)!
 
 PowerShell (Windows) — PROPEGI Financeiro:
 
 ```powershell
-cd 'c:\Users\Elward\Documents\repositorios\propegi-data-analysis\PROPEGI Financeiro\app'
-streamlit run projeto_financeiro.py
+cd 'c:\Users\Elward\Documents\repositorios\propegi-data-analysis\PROPEGI Financeiro'
+streamlit run app.py
 ```
 
 PowerShell (Windows) — Projeto de Desenvolvimento Tecnologico:
 
 ```powershell
 cd 'c:\Users\Elward\Documents\repositorios\propegi-data-analysis\Projeto de Desenvolvimento Tecnologico'
-streamlit run your_app.py
+streamlit run app.py
 ```
 
 fish / bash / zsh (Unix-like) — exemplo (ajuste o caminho):
 
 ```bash
-cd 'PROPEGI Financeiro/app'
-streamlit run projeto_financeiro.py
+cd 'PROPEGI Financeiro'
+streamlit run app.py
 ```
 
 Observação: os caminhos acima assumem que você está na máquina local onde o repositório foi clonado. Ajuste os caminhos conforme sua organização de pastas.
@@ -124,7 +130,11 @@ Observação: os caminhos acima assumem que você está na máquina local onde o
 ## 6) Dicas rápidas / resolução de problemas
 
 - Erro "module not found" para `streamlit` ou `pandas`:
-  - Verifique se o `.venv` está ativado e se `pip install -r requirements.txt` foi executado no ambiente ativo.
+  - **Causa mais comum**: ambiente virtual não está ativado
+  - **Solução**: 
+    1. Ative o ambiente virtual (`.venv`) seguindo o passo 2
+    2. Execute `pip install -r requirements.txt` novamente
+    3. Confirme que está ativado verificando se aparece `(.venv)` no início do prompt
 - Erro ao ativar `.venv` no PowerShell:
   - Execute `Set-ExecutionPolicy -Scope Process -ExecutionPolicy RemoteSigned -Confirm:$false` na sessão atual e tente ativar novamente.
 - Arquivo JSON não encontrado:
