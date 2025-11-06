@@ -12,13 +12,13 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from data_utils import carregar_financas_json, filtrar  # noqa: E402
 
-DEFAULT_JSON_PATH = Path(__file__).resolve().parents[1] / "input" / "Financas.json"
+CAMINHO_PADRAO_JSON = Path(__file__).resolve().parents[1] / "input" / "Financas.json"
 
 st.set_page_config(page_title="Análise 1", layout="wide", initial_sidebar_state="collapsed")
 st.header("◈ Comparativo de Valores das Folhas por Projeto com base no Mês e o Ano")
 
 # Entrada do caminho do JSON
-caminho = st.text_input("Caminho do Financas.json", value=str(DEFAULT_JSON_PATH), help="Altere caso seu arquivo esteja em outro local.")
+caminho = st.text_input("Caminho do arquivo Financas.json", value=str(CAMINHO_PADRAO_JSON), help="Altere caso seu arquivo esteja em outro local.")
 
 try:
 	df = carregar_financas_json(caminho)
@@ -72,3 +72,4 @@ st.plotly_chart(fig, use_container_width=True)
 
 st.subheader("◆ Tabela Resumida")
 st.dataframe(tabela.style.format("{:,.2f}"), use_container_width=True, height=400)
+

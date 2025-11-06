@@ -11,12 +11,12 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from data_utils import carregar_financas_json, filtrar  # noqa: E402
 
-DEFAULT_JSON_PATH = Path(__file__).resolve().parents[1] / "input" / "Financas.json"
+CAMINHO_PADRAO_JSON = Path(__file__).resolve().parents[1] / "input" / "Financas.json"
 
 st.set_page_config(page_title="Análise 3", layout="wide", initial_sidebar_state="collapsed")
-st.header("◈ Análise 3: Evolução Mensal do Valor Total das Folhas por Projeto")
+st.header("◈ Análise 3: Evolução mensal do valor total das folhas por projeto")
 
-caminho = st.text_input("Caminho do Financas.json", value=str(DEFAULT_JSON_PATH), help="Se necessário, ajuste para o local onde o arquivo está.")
+caminho = st.text_input("Caminho do arquivo Financas.json", value=str(CAMINHO_PADRAO_JSON), help="Se necessário, ajuste para o local onde o arquivo está.")
 
 try:
 	df = carregar_financas_json(caminho)
