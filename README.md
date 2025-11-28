@@ -4,6 +4,8 @@
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.20.0-FF4B4B.svg)](https://streamlit.io/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
+<!-- Teste de pull request -->
+
 Dashboards interativos em **Streamlit** que consomem arquivos **JSON** para dois domínios principais:
 
 - **PROPEGI Financeiro**
@@ -82,6 +84,7 @@ Se precisar de pacotes de desenvolvimento (formatadores, linter, testes), posso 
 ## 4) Estrutura relevante do projeto
 
 - `Projeto de Desenvolvimento Tecnologico/`
+
   - `app.py` — app Streamlit principal deste domínio
   - `data_utils.py`, `pages/` — utilitários e páginas auxiliares
   - `input/Projetos de Desenvolvimento Tecnologico.json` — exemplo/entrada de dados
@@ -95,7 +98,8 @@ Se precisar de pacotes de desenvolvimento (formatadores, linter, testes), posso 
 
 ## 5) Como executar os apps (exemplos)
 
-⚠️ **MUITO IMPORTANTE**: 
+⚠️ **MUITO IMPORTANTE**:
+
 1. **SEMPRE** ative o ambiente virtual (`.venv`) antes de rodar (veja passo 2)
 2. **NUNCA** tente rodar sem ativar o ambiente virtual, pois as dependências não estarão disponíveis
 3. **O MESMO** ambiente virtual (`.venv`) serve para rodar os dois projetos! Não precisa criar um novo
@@ -131,7 +135,7 @@ Observação: os caminhos acima assumem que você está na máquina local onde o
 
 - Erro "module not found" para `streamlit` ou `pandas`:
   - **Causa mais comum**: ambiente virtual não está ativado
-  - **Solução**: 
+  - **Solução**:
     1. Ative o ambiente virtual (`.venv`) seguindo o passo 2
     2. Execute `pip install -r requirements.txt` novamente
     3. Confirme que está ativado verificando se aparece `(.venv)` no início do prompt
